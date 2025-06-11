@@ -18,7 +18,7 @@ const slides: Slide[] = [
     title: "Caminhos da Fé",
     excerpt: "\"A jornada espiritual começa com um simples passo de fé, e cada página desta obra ilumina o caminho para uma vida mais plena e significativa.\"",
     badge: "Novo Lançamento",
-    backgroundImage: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
+    backgroundImage: "https://editoradaurel.com.br/wp-content/uploads/2025/01/bannerNovidades2025-aquietai-vos-e-saaabei-que-eu-sou-deus-upscaled-font-1024x512.png",
     primaryButton: "Comprar Agora",
     secondaryButton: "Ler Amostra",
     gradientClasses: "from-[hsl(210,22%,22%)]/80 via-[hsl(210,22%,22%)]/60 to-[hsl(25,76%,31%)]/70"
@@ -35,10 +35,10 @@ const slides: Slide[] = [
   },
   {
     id: 3,
-    title: "Conhecimento Transformador",
-    excerpt: "\"Mergulhe em obras acadêmicas que expandem horizontes intelectuais e formam pensadores críticos para o futuro.\"",
-    badge: "Educação Superior",
-    backgroundImage: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
+    title: "Um Refrigério parar alma",
+    excerpt: "\"Mergulhe em obras profundas que expandem horizontes .\"",
+    badge: "Inspiração",
+    backgroundImage: "https://editoradaurel.com.br/wp-content/uploads/2025/01/o-ser-e-a-existencia-40-1-1024x685.jpg",
     primaryButton: "Catálogo Acadêmico",
     secondaryButton: "Desconto Estudante",
     gradientClasses: "from-[hsl(210,22%,22%)]/90 via-[hsl(25,76%,31%)]/70 to-[hsl(210,22%,22%)]/80"
