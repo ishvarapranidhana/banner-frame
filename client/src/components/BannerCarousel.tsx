@@ -122,12 +122,13 @@ export default function BannerCarousel() {
 
   return (
     <div 
-      className="relative w-full h-screen max-w-[800px] max-h-[600px] mx-auto bg-white shadow-2xl rounded-lg overflow-hidden carousel-container"
+      className="relative w-full h-[60vh] max-w-[560px] max-h-[420px] mx-auto bg-white shadow-xl rounded-lg overflow-hidden carousel-container"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      style={{ fontSize: '70%' }} // Reduce all font sizes by 30%
     >
       {/* Progress Bar */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-white/20 z-20">
+      <div className="absolute top-0 left-0 w-full h-[3px] bg-white/20 z-20">
         <div 
           className="h-full bg-[hsl(42,68%,66%)] transition-all duration-300 ease-linear"
           style={{ width: `${((currentSlide + 1) / totalSlides) * 100}%` }}
@@ -154,46 +155,46 @@ export default function BannerCarousel() {
               {/* Background image, scaled and centered */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div
-                  className="w-4/5 h-4/5 mx-auto scale-[.8] transition-all duration-300"
+                  className="w-3/5 h-3/5 mx-auto scale-[.7] transition-all duration-300"
                   style={{
                     backgroundImage: `url(${slide.backgroundImage})`,
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
-                    width: '80%',
-                    height: '80%',
+                    width: '60%',
+                    height: '60%',
                   }}
                 />
               </div>
               
               {/* Content */}
-              <div className="relative z-10 h-full flex items-center justify-center p-8">
-                <div className="text-center max-w-md animate-fade-in">
+              <div className="relative z-10 h-full flex items-center justify-center p-4">
+                <div className="text-center max-w-xs animate-fade-in">
                   {/* Badge */}
-                  <div className="mb-4">
-                    <span className="inline-block px-4 py-2 bg-[hsl(42,68%,66%)]/90 text-[hsl(210,22%,22%)] text-sm font-semibold rounded-full uppercase tracking-wider">
+                  <div className="mb-2">
+                    <span className="inline-block px-2 py-1 bg-[hsl(42,68%,66%)]/90 text-[hsl(210,22%,22%)] text-xs font-semibold rounded-full uppercase tracking-wider">
                       {slide.badge}
                     </span>
                   </div>
                   
                   {/* Title */}
-                  <h1 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                  <h1 className="font-playfair text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">
                     {slide.title}
                   </h1>
                   
                   {/* Excerpt (Tagline) - only if showTagline is true */}
                   {slide.showTagline !== false && (
-                    <p className="text-white/90 text-lg mb-6 font-inter leading-relaxed">
+                    <p className="text-white/90 text-base mb-3 font-inter leading-relaxed">
                       {slide.excerpt}
                     </p>
                   )}
                   
                   {/* Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                    <button className="bg-[hsl(42,68%,66%)] hover:bg-[hsl(42,68%,66%)]/90 text-[hsl(210,22%,22%)] font-semibold px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105">
+                  <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                    <button className="bg-[hsl(42,68%,66%)] hover:bg-[hsl(42,68%,66%)]/90 text-[hsl(210,22%,22%)] font-semibold px-5 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 text-sm">
                       {slide.primaryButton}
                     </button>
-                    <button className="border-2 border-white text-white hover:bg-white hover:text-[hsl(210,22%,22%)] font-semibold px-8 py-3 rounded-lg transition-all duration-300">
+                    <button className="border-2 border-white text-white hover:bg-white hover:text-[hsl(210,22%,22%)] font-semibold px-5 py-2 rounded-lg transition-all duration-300 text-sm">
                       {slide.secondaryButton}
                     </button>
                   </div>
@@ -205,12 +206,12 @@ export default function BannerCarousel() {
       </div>
 
       {/* Navigation Dots */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+      <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
               index === currentSlide 
                 ? 'bg-white' 
                 : 'bg-white/60 hover:bg-white'
@@ -223,18 +224,18 @@ export default function BannerCarousel() {
       {/* Navigation Arrows */}
       <button
         onClick={() => handleNavigation('prev')}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 z-20 group"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300 z-20 group"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="w-6 h-6 transform group-hover:scale-110 transition-transform" />
+        <ChevronLeft className="w-4 h-4 transform group-hover:scale-110 transition-transform" />
       </button>
 
       <button
         onClick={() => handleNavigation('next')}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 z-20 group"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300 z-20 group"
         aria-label="Next slide"
       >
-        <ChevronRight className="w-6 h-6 transform group-hover:scale-110 transition-transform" />
+        <ChevronRight className="w-4 h-4 transform group-hover:scale-110 transition-transform" />
       </button>
     </div>
   );
