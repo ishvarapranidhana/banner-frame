@@ -125,7 +125,7 @@ export default function BannerCarousel() {
       className="relative w-full h-[60vh] max-w-[560px] max-h-[420px] mx-auto bg-white shadow-xl rounded-lg overflow-hidden carousel-container"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{ fontSize: '70%' }} // Reduce all font sizes by 30%
+      style={{ fontSize: '60%' }} // Reduce all font sizes by 40%
     >
       {/* Progress Bar */}
       <div className="absolute top-0 left-0 w-full h-[3px] bg-white/20 z-20">
@@ -152,49 +152,49 @@ export default function BannerCarousel() {
               {/* Background gradient overlay */}
               <div className={`absolute inset-0 bg-gradient-to-br ${slide.gradientClasses}`} />
               
-              {/* Background image, scaled and centered */}
+              {/* Background image, scaled to fit width */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div
-                  className="w-3/5 h-3/5 mx-auto scale-[.7] transition-all duration-300"
+                  className="w-full h-4/5 mx-auto transition-all duration-300"
                   style={{
                     backgroundImage: `url(${slide.backgroundImage})`,
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
-                    width: '60%',
-                    height: '60%',
+                    width: '100%',
+                    height: '80%',
                   }}
                 />
               </div>
               
               {/* Content */}
-              <div className="relative z-10 h-full flex items-center justify-center p-4">
+              <div className="relative z-10 h-full flex items-center justify-center p-2">
                 <div className="text-center max-w-xs animate-fade-in">
                   {/* Badge */}
-                  <div className="mb-2">
-                    <span className="inline-block px-2 py-1 bg-[hsl(42,68%,66%)]/90 text-[hsl(210,22%,22%)] text-xs font-semibold rounded-full uppercase tracking-wider">
+                  <div className="mb-1">
+                    <span className="inline-block px-1.5 py-0.5 bg-[hsl(42,68%,66%)]/90 text-[hsl(210,22%,22%)] text-[0.7em] font-semibold rounded-full uppercase tracking-wider">
                       {slide.badge}
                     </span>
                   </div>
                   
                   {/* Title */}
-                  <h1 className="font-playfair text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">
+                  <h1 className="font-playfair text-xl md:text-2xl font-bold text-white mb-1 leading-tight">
                     {slide.title}
                   </h1>
                   
                   {/* Excerpt (Tagline) - only if showTagline is true */}
                   {slide.showTagline !== false && (
-                    <p className="text-white/90 text-base mb-3 font-inter leading-relaxed">
+                    <p className="text-white/90 text-sm mb-2 font-inter leading-relaxed">
                       {slide.excerpt}
                     </p>
                   )}
                   
                   {/* Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-2 justify-center">
-                    <button className="bg-[hsl(42,68%,66%)] hover:bg-[hsl(42,68%,66%)]/90 text-[hsl(210,22%,22%)] font-semibold px-5 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 text-sm">
+                  <div className="flex flex-col sm:flex-row gap-1 justify-center">
+                    <button className="bg-[hsl(42,68%,66%)] hover:bg-[hsl(42,68%,66%)]/90 text-[hsl(210,22%,22%)] font-semibold px-3 py-1 rounded-lg transition-all duration-300 transform hover:scale-105 text-xs">
                       {slide.primaryButton}
                     </button>
-                    <button className="border-2 border-white text-white hover:bg-white hover:text-[hsl(210,22%,22%)] font-semibold px-5 py-2 rounded-lg transition-all duration-300 text-sm">
+                    <button className="border-2 border-white text-white hover:bg-white hover:text-[hsl(210,22%,22%)] font-semibold px-3 py-1 rounded-lg transition-all duration-300 text-xs">
                       {slide.secondaryButton}
                     </button>
                   </div>
