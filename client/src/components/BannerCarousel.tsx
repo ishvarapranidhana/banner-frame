@@ -10,6 +10,7 @@ interface Slide {
   primaryButton: string;
   secondaryButton: string;
   gradientClasses: string;
+  showTagline?: boolean; // Add this line
 }
 
 const slides: Slide[] = [
@@ -21,7 +22,8 @@ const slides: Slide[] = [
     backgroundImage: "https://editoradaurel.com.br/wp-content/uploads/2025/01/bannerNovidades2025-aquietai-vos-e-saaabei-que-eu-sou-deus-upscaled-font-1024x512.png",
     primaryButton: "Comprar Agora",
     secondaryButton: "Ler Amostra",
-    gradientClasses: "from-[hsl(210,22%,22%)]/80 via-[hsl(210,22%,22%)]/60 to-[hsl(25,76%,31%)]/70"
+    gradientClasses: "from-[hsl(210,22%,22%)]/80 via-[hsl(210,22%,22%)]/60 to-[hsl(25,76%,31%)]/70",
+    showTagline: false // Hide tagline for first slide
   },
   {
     id: 2,
@@ -31,7 +33,8 @@ const slides: Slide[] = [
     backgroundImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
     primaryButton: "Ver Coleção",
     secondaryButton: "Oferta Especial",
-    gradientClasses: "from-[hsl(25,76%,31%)]/85 via-[hsl(210,22%,22%)]/75 to-[hsl(42,68%,66%)]/60"
+    gradientClasses: "from-[hsl(25,76%,31%)]/85 via-[hsl(210,22%,22%)]/75 to-[hsl(42,68%,66%)]/60",
+    showTagline: true
   },
   {
     id: 3,
@@ -41,7 +44,8 @@ const slides: Slide[] = [
     backgroundImage: "https://editoradaurel.com.br/wp-content/uploads/2025/01/o-ser-e-a-existencia-40-1-1024x685.jpg",
     primaryButton: "Catálogo Acadêmico",
     secondaryButton: "Desconto Estudante",
-    gradientClasses: "from-[hsl(210,22%,22%)]/90 via-[hsl(25,76%,31%)]/70 to-[hsl(210,22%,22%)]/80"
+    gradientClasses: "from-[hsl(210,22%,22%)]/90 via-[hsl(25,76%,31%)]/70 to-[hsl(210,22%,22%)]/80",
+    showTagline: true
   }
 ];
 
@@ -142,16 +146,25 @@ export default function BannerCarousel() {
           {slides.map((slide) => (
             <div 
               key={slide.id}
-              className="carousel-slide min-w-full h-full relative flex-shrink-0"
+              className="carousel-slide min-w-full h-full relative flex-shrink-0 flex items-center justify-center"
             >
               {/* Background gradient overlay */}
               <div className={`absolute inset-0 bg-gradient-to-br ${slide.gradientClasses}`} />
               
-              {/* Background image */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${slide.backgroundImage})` }}
-              />
+              {/* Background image, scaled and centered */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div
+                  className="w-4/5 h-4/5 mx-auto scale-[.8] transition-all duration-300"
+                  style={{
+                    backgroundImage: `url(${slide.backgroundImage})`,
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+                    width: '80%',
+                    height: '80%',
+                  }}
+                />
+              </div>
               
               {/* Content */}
               <div className="relative z-10 h-full flex items-center justify-center p-8">
@@ -168,10 +181,12 @@ export default function BannerCarousel() {
                     {slide.title}
                   </h1>
                   
-                  {/* Excerpt */}
-                  <p className="text-white/90 text-lg mb-6 font-inter leading-relaxed">
-                    {slide.excerpt}
-                  </p>
+                  {/* Excerpt (Tagline) - only if showTagline is true */}
+                  {slide.showTagline !== false && (
+                    <p className="text-white/90 text-lg mb-6 font-inter leading-relaxed">
+                      {slide.excerpt}
+                    </p>
+                  )}
                   
                   {/* Buttons */}
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
